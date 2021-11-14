@@ -1,7 +1,11 @@
-structure:
-  - bar:
-    type: chorus
-    header: open
-  - bar:
-    type: verse
-    header: open    
+song:
+  - block:
+    preset: solo
+    header: True
+  - block:
+    preset: solo
+    header: True    
+  - block:
+    preset: separator
+  - block:
+    preset: solo    
