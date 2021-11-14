@@ -42,33 +42,33 @@ icons = {
     'header_single': (3, 1)
     }
 block_presets = {
-    'verse' : {'block_text':'V', 'block_color':'green', 'block_icon':''},
-    'verse1' : {'block_text':'V1', 'block_color':'green', 'block_icon':''},
-    'verse2' : {'block_text':'V2', 'block_color':'green', 'block_icon':''},
-    'verse3' : {'block_text':'V3', 'block_color':'green', 'block_icon':''},
-    'verse4': {'block_text': 'V4', 'block_color': 'green', 'block_icon': ''}, 
-    'q-verse' : {'block_text':'V', 'block_color':'blue', 'block_icon':''},
-    'q-verse1' : {'block_text':'V1', 'block_color':'blue', 'block_icon':''},
-    'q-verse2' : {'block_text':'V2', 'block_color':'blue', 'block_icon':''},
-    'q-verse3' : {'block_text':'V3', 'block_color':'blue', 'block_icon':''},
-    'q-verse4': {'block_text': 'V4', 'block_color': 'blue', 'block_icon': ''},
-    'bridge' : {'block_text':'B', 'block_color':'orange', 'block_icon':''},
-    'bridge1' : {'block_text':'B1', 'block_color':'orange', 'block_icon':''},
-    'bridge2' : {'block_text':'B2', 'block_color':'orange', 'block_icon':''},
-    'bridge3' : {'block_text':'B3', 'block_color':'orange', 'block_icon':''},
-    'bridge4': {'block_text': 'B4', 'block_color': 'orange', 'block_icon': ''},
-    'q-bridge' : {'block_text':'B', 'block_color':'blue', 'block_icon':''},
-    'q-bridge1' : {'block_text':'B1', 'block_color':'blue', 'block_icon':''},
-    'q-bridge2' : {'block_text':'B2', 'block_color':'blue', 'block_icon':''},
-    'q-bridge3' : {'block_text':'B3', 'block_color':'blue', 'block_icon':''},
-    'q-bridge4': {'block_text': 'B4', 'block_color': 'blue', 'block_icon': ''},
-    'chorus': {'block_text': 'C', 'block_color': 'red', 'block_icon': ''},
-    'solo': {'block_text': 'S', 'block_color': 'purple', 'block_icon': ''},
-    'drop': {'block_text': '', 'block_color': 'gray', 'block_icon': 'drop'},
-    'hit': {'block_text': '', 'block_color': 'gray', 'block_icon': 'drop'},
-    'theme': {'block_text': '', 'block_color': 'purple', 'block_icon': 'note'},
-    'outro': {'block_text': '', 'block_color': 'red', 'block_icon': 'drop'},
-    
+    'separator': {},
+    'verse' : {'block_text':'V', 'block_color':'green', 'block_icon':'', 'label':'Verse'},
+    'verse1': {'block_text': 'V1', 'block_color': 'green', 'block_icon': '', 'label': 'Verse'},
+    'verse2': {'block_text': 'V2', 'block_color': 'green', 'block_icon': '', 'label': 'Verse'},
+    'verse3': {'block_text': 'V3', 'block_color': 'green', 'block_icon': '', 'label': 'Verse'},
+    'verse4': {'block_text': 'V4', 'block_color': 'green', 'block_icon': '', 'label': 'Verse'},
+    'q-verse' : {'block_text':'V', 'block_color':'blue', 'block_icon':'', 'label':'Verse'},
+    'q-verse1' : {'block_text':'V1', 'block_color':'blue', 'block_icon':'', 'label':'Verse'},
+    'q-verse2' : {'block_text':'V2', 'block_color':'blue', 'block_icon':'', 'label':'Verse'},
+    'q-verse3': {'block_text': 'V3', 'block_color': 'blue', 'block_icon': '', 'label': 'Verse'},
+    'q-verse4': {'block_text': 'V4', 'block_color': 'blue', 'block_icon': '', 'label': 'Verse'},
+    'bridge': {'block_text': 'B', 'block_color': 'orange', 'block_icon': '', 'label': 'Bridge'},
+    'bridge1' : {'block_text':'B1', 'block_color':'orange', 'block_icon':'', 'label':'Bridge'},
+    'bridge2' : {'block_text':'B2', 'block_color':'orange', 'block_icon':'', 'label':'Bridge'},
+    'bridge3' : {'block_text':'B3', 'block_color':'orange', 'block_icon':'', 'label':'Bridge'},
+    'bridge4': {'block_text': 'B4', 'block_color': 'orange', 'block_icon': '', 'label': 'Bridge'},
+    'q-bridge': {'block_text': 'B', 'block_color': 'blue', 'block_icon': '', 'label': 'Bridge'},
+    'q-bridge1': {'block_text': 'B1', 'block_color': 'blue', 'block_icon': '', 'label': 'Bridge'},
+    'q-bridge2': {'block_text': 'B2', 'block_color': 'blue', 'block_icon': '', 'label': 'Bridge'},
+    'q-bridge3' : {'block_text':'B3', 'block_color':'blue', 'block_icon':'', 'label':'Bridge'},
+    'q-bridge4': {'block_text': 'B4', 'block_color': 'blue', 'block_icon': '', 'label': 'Bridge'},
+    'chorus': {'block_text': 'C', 'block_color': 'red', 'block_icon': '', 'label': 'Chorus'},
+    'solo': {'block_text': 'S', 'block_color': 'purple', 'block_icon': '', 'label': 'Solo'},
+    'drop': {'block_text': '', 'block_color': 'gray', 'block_icon': 'drop', 'label': 'Drop'},
+    'hit': {'block_text': '', 'block_color': 'gray', 'block_icon': 'drop', 'label': 'Hit'},
+    'theme': {'block_text': '', 'block_color': 'purple', 'block_icon': 'note', 'label': 'Theme'},
+    'outro': {'block_text': '', 'block_color': 'red', 'block_icon': 'drop', 'label': 'Outro'},
     'header_open': {'block_text': '', 'block_color': '', 'block_icon': 'header_open', 'icon_color': 'gray'},
     'header_fill': {'block_text': '', 'block_color': '', 'block_icon': 'header_fill', 'icon_color': 'gray'},
     'header_close': {'block_text': '', 'block_color': '', 'block_icon': 'header_close', 'icon_color': 'gray'},
@@ -124,6 +124,27 @@ def generate_text(text: str, font_size: int = 53) -> Image:
     h_fix= 6
     draw.text(((W-w)/2, ((H-h)/2)-h_fix), text, (255, 255, 255), font=font)
     return canvas
+
+
+def generate_label(text: str, font_size: int = 20) -> Image:
+    '''
+    Generate label sprite with 128x128
+    
+    Arguments:
+    text        -- Text label
+    font_size   -- Font size (default: 32)
+
+    returns     PIL.Image
+    '''
+    font = ImageFont.truetype(str(PATH_FONT), font_size)
+    W, H = 128, 128
+    canvas = Image.new('RGBA', (128, 128))
+    draw = ImageDraw.Draw(canvas)
+    w, h = draw.textsize(text, font=font)
+    h_fix = 53
+    draw.text(((W-w)/2, ((H-h)/2)-h_fix), text, ImageColor.getrgb(colors['gray']), font=font)
+    return canvas
+
 
 def generate_block(text: str = '', color: str = '', icon: str = '', icon_color: str = 'white') -> Image:
     '''
@@ -181,9 +202,13 @@ def generate_separator():
 
 
 class Block():
-    def __init__(self, preset, header=None):
+    def __init__(self, preset, header=None, label=None):
         self.img = generate_block_from_preset(preset)
         self.header = header
+        self.label = label
+        if 'label' in block_presets[preset].keys():
+            self.label = block_presets[preset]['label']
+           
         
     
 
@@ -193,10 +218,10 @@ def generate_full_document():
     global MARGIN_X
     
     song = []
-    song.append(Block('drop', header='header_open'))
+    song.append(Block('verse', header='header_open'))
     song.append(Block('theme', header='header_close'))
     song.append(Block('separator'))
-    song.append(Block('verse1', header='header_open'))
+    song.append(Block('verse', header='header_open'))
     song.append(Block('verse1', header='header_fill'))
     song.append(Block('chorus', header='header_fill'))
     song.append(Block('theme', header='header_close'))
@@ -229,15 +254,26 @@ def generate_full_document():
     next_x = 0
     for block in song:
         buffer_image = Image.new('RGBA', (picture_w+MARGIN_X*2, MARGIN_X*3))
+        
         buffer_image.paste(block.img, (MARGIN_X+next_x, MARGIN_X), block.img)
         if block.header:
             header = generate_block_from_preset(block.header)
             buffer_image.paste(header, (MARGIN_X+next_x, 0), header)
+        song_image = Image.alpha_composite(song_image, buffer_image)
+        next_x += block.img.width
 
+
+    next_x = 0
+    for block in song:
+        buffer_image = Image.new('RGBA', (picture_w+MARGIN_X*2, MARGIN_X*3))
+        if block.label:
+            label = generate_label(block.label)
+            buffer_image.paste(label, (MARGIN_X+next_x, 256), label)
         song_image = Image.alpha_composite(song_image, buffer_image)
         next_x += block.img.width
 
     # RETURN IMAGE OBJECT
     return song_image
+
 
 generate_full_document().show()
