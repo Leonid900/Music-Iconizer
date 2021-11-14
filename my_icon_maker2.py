@@ -14,6 +14,8 @@ colors = {
     'green':'#a6e22e', #green (function or method)
     'white':'#f8f8f2', #white (default_text)
     'gray':'#ababaa', #gray (comment)
+    'fullwhite': '#ffffff', #full white
+    'fullblack': '#000000',  # full black
 }
 
 
