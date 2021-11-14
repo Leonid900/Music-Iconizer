@@ -6,8 +6,9 @@ PATH_RESOURCES = PATH_BASE_DIR.joinpath('resources\\')
 PATH_TILESET = PATH_RESOURCES.joinpath('Tileset.png')
 PATH_FONT = PATH_RESOURCES.joinpath('ArialRounded.ttf')
 
-# MAIN TILESET
+# INIT AND CONSTANTS
 img = Image.open(PATH_TILESET)
+MARGIN_X = 128
 
 # HARDCODED VALUES
 colors = {
@@ -34,7 +35,12 @@ icons = {
     'note': (12, 0),
     'rise': (13, 0),
     'drop': (14, 0),
-    'ellipsis': (15, 0)}
+    'ellipsis': (15, 0),
+    'header_open': (0, 1),
+    'header_fill': (1, 1),
+    'header_close': (2, 1),
+    'header_single': (3, 1)
+    }
 block_presets = {
     'verse' : {'block_text':'V', 'block_color':'green', 'block_icon':''},
     'verse1' : {'block_text':'V1', 'block_color':'green', 'block_icon':''},
@@ -60,7 +66,14 @@ block_presets = {
     'solo': {'block_text': 'S', 'block_color': 'purple', 'block_icon': ''},
     'drop': {'block_text': '', 'block_color': 'gray', 'block_icon': 'drop'},
     'hit': {'block_text': '', 'block_color': 'gray', 'block_icon': 'drop'},
-    'theme': {'block_text': '', 'block_color': 'purple', 'block_icon': 'note'}}
+    'theme': {'block_text': '', 'block_color': 'purple', 'block_icon': 'note'},
+    'outro': {'block_text': '', 'block_color': 'red', 'block_icon': 'drop'},
+    
+    'header_open': {'block_text': '', 'block_color': '', 'block_icon': 'header_open', 'icon_color': 'gray'},
+    'header_fill': {'block_text': '', 'block_color': '', 'block_icon': 'header_fill', 'icon_color': 'gray'},
+    'header_close': {'block_text': '', 'block_color': '', 'block_icon': 'header_close', 'icon_color': 'gray'},
+    'header_single': {'block_text': '', 'block_color': '', 'block_icon': 'header_single', 'icon_color': 'gray'},
+    }
 
 def get_tile(img: Image, x: int, y: int, tile_size: int = 128) -> Image:
     '''
@@ -112,7 +125,7 @@ def generate_text(text: str, font_size: int = 53) -> Image:
     draw.text(((W-w)/2, ((H-h)/2)-h_fix), text, (255, 255, 255), font=font)
     return canvas
 
-def generate_block(text: str = '', color: str = 'gray', icon: str = '') -> Image:
+def generate_block(text: str = '', color: str = '', icon: str = '', icon_color: str = 'white') -> Image:
     '''
     Generate full block sprite with 128x128
     
@@ -122,21 +135,24 @@ def generate_block(text: str = '', color: str = 'gray', icon: str = '') -> Image
     icon        -- Optional icon    (default: None)
     returns     PIL.Image
     '''
-    
+
     # Mix Font onto Background
-    square = generate_colored_sprite(color, 2, 0)
+    if color:
+        square = generate_colored_sprite(color, 2, 0)
+    else:
+        square = Image.new('RGBA', (128, 128))
     font = generate_text(text)
     mix1 = Image.alpha_composite(square, font)
 
     # Mix optional Icon onto Background
     if icon:
-        icon = generate_colored_sprite('white', icons[icon][0], icons[icon][1])
+        icon = generate_colored_sprite(icon_color, icons[icon][0], icons[icon][1])
         mix2 = Image.alpha_composite(mix1, icon)
         return mix2
     else:
         return mix1
 
-def generate_block_from_preset(preset_name):
+def generate_block_from_preset(preset):
     '''
     Generate block from preset
     
@@ -144,7 +160,84 @@ def generate_block_from_preset(preset_name):
     preset_name     -- Preset name
     returns     PIL.Image
     '''
-    text = block_presets[preset_name]['block_text']
-    color = block_presets[preset_name]['block_color']
-    icon = block_presets[preset_name]['block_icon']
-    return generate_block(text, color, icon)
+    
+    if preset == 'separator':
+        return generate_separator()
+    
+    text = block_presets[preset]['block_text']
+    color = block_presets[preset]['block_color']
+    icon = block_presets[preset]['block_icon']
+    icon_color = 'white'
+    if 'icon_color' in block_presets[preset].keys():
+        icon_color = block_presets[preset]['icon_color']
+    return generate_block(text, color, icon, icon_color)
+
+def generate_separator():
+    '''
+    Get empty Image object with 32x128 size
+    '''
+    return Image.new('RGBA', (32, 128))
+
+
+
+class Block():
+    def __init__(self, preset, header=None):
+        self.img = generate_block_from_preset(preset)
+        self.header = header
+        
+    
+
+
+
+def generate_full_document():
+    global MARGIN_X
+    
+    song = []
+    song.append(Block('drop', header='header_open'))
+    song.append(Block('theme', header='header_close'))
+    song.append(Block('separator'))
+    song.append(Block('verse1', header='header_open'))
+    song.append(Block('verse1', header='header_fill'))
+    song.append(Block('chorus', header='header_fill'))
+    song.append(Block('theme', header='header_close'))
+    song.append(Block('separator'))
+    song.append(Block('verse1', header='header_open'))
+    song.append(Block('verse1', header='header_fill'))
+    song.append(Block('chorus', header='header_fill'))
+    song.append(Block('theme', header='header_close'))
+    song.append(Block('separator'))
+    song.append(Block('bridge1', header='header_single'))
+    song.append(Block('q-verse1', header='header_open'))
+    song.append(Block('q-bridge2', header='header_close'))
+    song.append(Block('separator'))
+    song.append(Block('drop', header='header_single'))
+    song.append(Block('separator'))
+    song.append(Block('chorus', header='header_open'))
+    song.append(Block('chorus', header='header_fill'))
+    song.append(Block('outro', header='header_close'))
+
+
+    # GET PICTURE WIDTH
+    picture_w = 0
+    for block in song:
+        picture_w += block.img.width
+        
+    # CREATE EMPTY IMAGE
+    song_image = Image.new('RGBA', (picture_w+MARGIN_X*2, MARGIN_X*3), ImageColor.getrgb("#FFFFFF"))
+
+    # FILL EMPTY IMAGE WITH blockS AND block LINES
+    next_x = 0
+    for block in song:
+        buffer_image = Image.new('RGBA', (picture_w+MARGIN_X*2, MARGIN_X*3))
+        buffer_image.paste(block.img, (MARGIN_X+next_x, MARGIN_X), block.img)
+        if block.header:
+            header = generate_block_from_preset(block.header)
+            buffer_image.paste(header, (MARGIN_X+next_x, 0), header)
+
+        song_image = Image.alpha_composite(song_image, buffer_image)
+        next_x += block.img.width
+
+    # RETURN IMAGE OBJECT
+    return song_image
+
+generate_full_document().show()
