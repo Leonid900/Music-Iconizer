@@ -91,6 +91,12 @@ def create_song_image():
     song.append( {'pic': get_bar(preset='bridge'), 'header': 'bar_fill'})
     song.append( {'pic': get_bar(preset='solo'), 'header': 'bar_fill'})
     song.append( {'pic': get_bar(preset='chorus'), 'header': 'bar_close'})
+    song.append( {'pic': get_bar(preset='chorus'), 'header': 'bar_close'})
+    song.append( {'pic': get_bar(preset='chorus'), 'header': 'bar_close'})
+    song.append( {'pic': get_bar(preset='chorus'), 'header': 'bar_close'})
+    song.append( {'pic': get_bar(preset='chorus'), 'header': 'bar_close'})
+    song.append( {'pic': get_bar(preset='chorus'), 'header': 'bar_close'})
+    song.append({'pic': get_bar(preset='chorus'), 'header': 'bar_close'})
 
     # GET PICTURE WIDTH
     picture_w = 0
