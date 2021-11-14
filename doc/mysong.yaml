@@ -1,0 +1,7 @@
+structure:
+  - bar:
+    type: chorus
+    header: open
+  - bar:
+    type: verse
+    header: open    
